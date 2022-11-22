@@ -10,6 +10,15 @@ let player2 = {
   character: 'O'
 };
 
+// Add event listeners to all boxes
+let allBoxes = document.querySelectorAll('.grid>div>div');
+
+for (let i = 0; i < 9; i++) {  
+  allBoxes[i].addEventListener('click', function(event) {
+    allBoxes[i].textContent = 'X';
+  });
+}
+
 // 2. Write a function to initialize the game
 function initializeGame() {
   game.moves = 0;
