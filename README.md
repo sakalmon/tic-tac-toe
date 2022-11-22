@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying to get three of their characters in a line.
 
-### [Play the game!]()
+### [Play the game!](https://sakalmon.github.io/tic-tac-toe/)
 
 ## :mag_right: About
 ### How to play the game
