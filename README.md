@@ -32,7 +32,7 @@ A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying
 
 ### 3. Code Requirements
 #### Specific Data Types
-* Game - Track details about the game such as who's turn it is, game state, winner etc. - Object literal
+* Game - Track details about the game such as who's turn it is, game state, winner, etc. - Object literal
 * Grid - Players will interact with this grid to play - 2D array
 * Players - Store details about the player. For example, their character (**X** or **O**) - Object literal
 * Variables for DOM manipulation - DOM object
@@ -84,12 +84,7 @@ A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying
 1. Declare the required variables
 ```
 let game = {};
-
-let grid = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', '']
-];
+let grid = [];
 
 let player1 = {
   character: 'X'
@@ -101,14 +96,18 @@ let player2 = {
 ```
 2. Write a function to initialize the game
 ```
-function initializeGame(game) {
+function initializeGame() {
   game.moves = 0;
   game.lastMove = '';
   game.currentPlayer = 'X';
   game.state = 'inProgress';
   game.winner = '';
   
-  return game;
+  grid = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ];
 }
 ```
 3. Write logic to determine the winner
