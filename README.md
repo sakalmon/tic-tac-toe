@@ -127,7 +127,7 @@ function isTied(grid) {
   
   // Todo
   
-  return tied
+  return tied;
 }
 ```
 5. Write logic to determine if it's possible for someone to win
@@ -162,8 +162,8 @@ function determineGameState(grid) {
 ```
 7. Write logic to determine who's turn it is (**X** starts first)
 ```
-function whosTurn(game.lastMove) {
-  if (game.lastMove === 'X') {
+function whosTurn(lastMove) {
+  if (lastMove === 'X') {
     return 'O';
   } else {
     return 'X';
