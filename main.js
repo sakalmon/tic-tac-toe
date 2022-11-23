@@ -116,7 +116,7 @@ function determineGameState(grid) {
 
 // Determines who's turn it is
 function whosTurn(lastMove) {
-  if (lastMove === 'X') {
+  if (lastMove === 'X') { 
     return 'O';
   } else {
     return 'X';
@@ -152,7 +152,7 @@ for (let i = 0; i < 9; i++) {
       // Update grid array with the clicked location
       grid[row][column] = whosNext;
       game.moves++;
-      currentPlayer.textContent = whosTurn(game.lastMove);
+      currentPlayer.textContent = `Player ${whosTurn(game.lastMove)}'s turn`;
 
       console.log(game.moves);
       // Only check for a winner after 5 moves (minimum possible moves to win the game)
@@ -160,7 +160,7 @@ for (let i = 0; i < 9; i++) {
         console.log('Checking for winners');
         if (typeof determineWinner(grid) === 'string') {
           console.log('Winner: ' + determineWinner(grid));
-          outcome.textContent = `Winner: ${determineWinner(grid)}`;
+          outcome.textContent = `Player ${determineWinner(grid)} wins!`;
 
           // We have a winner. Stop the game.
           for (let i = 0; i < 9; i++) {
@@ -169,7 +169,7 @@ for (let i = 0; i < 9; i++) {
         }
         if (game.moves === 9 && typeof determineWinner(grid) !== 'string') {
           console.log(determineWinner(grid));
-          outcome.textContent = 'Game is tied';
+          outcome.textContent = 'Tie!';
           console.log('Game is tied');
         }
       }
