@@ -21,6 +21,7 @@ let outcome = document.querySelector('.outcome h2');
 let winner = document.querySelector('.winner');
 let p1Wins = document.querySelector('.p1-wins');
 let p2Wins = document.querySelector('.p2-wins');
+let resetScoreBtn = document.querySelector('.reset-score-btn');
 
 // ========================================================
 // Function declarations
@@ -48,6 +49,13 @@ function initializeGame() {
   }
 
   currentPlayer.textContent = 'Player X starts first';
+}
+
+function resetScore() {
+  player1.wins = 0;
+  player2.wins = 0;
+  p1Wins.textContent = player1.wins;
+  p2Wins.textContent = player2.wins;
 }
 
 // Determine the winner
@@ -254,3 +262,5 @@ for (let i = 0; i < 9; i++) {
     }
   });
 }
+
+resetScoreBtn.addEventListener('click', resetScore);
