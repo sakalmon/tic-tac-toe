@@ -155,26 +155,6 @@ function determineWinner(grid) {
   }
 }
 
-// Determine if it's a tie
-function isTied(grid) {
-  let tied = false;
-  
-  // Todo
-  
-  return tied;
-}
-
-// Determines the state of the game
-// Parameters: 2D Array
-// Returns: String. 'inProgress', 'winner', 'tied'
-function determineGameState(grid) {
-  let possible;
-  
-  // Todo
-  
-  return possible;
-}
-
 // Determines who's turn it is
 function whosTurn(lastMove) {
   if (lastMove === 'X') { 
@@ -262,10 +242,3 @@ for (let i = 0; i < 9; i++) {
     }
   });
 }
-
-// 9. Check if they want to play again. If so restart the game.
-// let playAgain;
-// // Ask if they want to play again and assign true or false to playAgain
-// if (playAgain) {
-//   // Reset the game
-// };
