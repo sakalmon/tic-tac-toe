@@ -13,8 +13,10 @@ let player2 = {
   character: 'O'
 };
 
+// DOM Objects
 let allBoxes = document.querySelectorAll('.grid>div>div');
 let currentPlayer = document.querySelector('.current-player');
+let outcome = document.querySelector('.outcome');
 let winner = document.querySelector('.winner');
 
 // ========================================================
@@ -158,7 +160,9 @@ for (let i = 0; i < 9; i++) {
         console.log('Checking for winners');
         if (typeof determineWinner(grid) === 'string') {
           console.log('Winner: ' + determineWinner(grid));
+          outcome.innerHTML = `Winner: ${determineWinner(grid)}`;
           winner.textContent = determineWinner(grid);
+
           // We have a winner. Stop the game.
           for (let i = 0; i < 9; i++) {
             allBoxes[i].classList.add('clicked');
@@ -166,6 +170,7 @@ for (let i = 0; i < 9; i++) {
         }
         if (game.moves === 9 && typeof determineWinner(grid) !== 'string') {
           console.log(determineWinner(grid));
+          outcome.textContent = 'Game is tied';
           console.log('Game is tied');
         }
       }
