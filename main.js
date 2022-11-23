@@ -160,8 +160,7 @@ for (let i = 0; i < 9; i++) {
         console.log('Checking for winners');
         if (typeof determineWinner(grid) === 'string') {
           console.log('Winner: ' + determineWinner(grid));
-          outcome.innerHTML = `Winner: ${determineWinner(grid)}`;
-          winner.textContent = determineWinner(grid);
+          outcome.textContent = `Winner: ${determineWinner(grid)}`;
 
           // We have a winner. Stop the game.
           for (let i = 0; i < 9; i++) {
