@@ -5,19 +5,16 @@
 let game = {};
 let grid = [];
 
-let player1 = {
-  character: 'X'
-};
-
-let player2 = {
-  character: 'O'
-};
+let player1 = {};
+let player2 = {};
 
 // DOM Objects
 let allBoxes = document.querySelectorAll('.grid>div>div');
 let currentPlayer = document.querySelector('.current-player');
 let outcome = document.querySelector('.outcome h2');
 let winner = document.querySelector('.winner');
+let p1Wins = document.querySelector('.p1-wins');
+let p2Wins = document.querySelector('.p2-wins');
 
 // ========================================================
 // Function declarations
@@ -29,6 +26,16 @@ function initializeGame() {
   game.lastMove = 'O';
   game.state = 'inProgress';
   game.winner = '';
+
+  player1 = {
+    character: 'X',
+    wins: 0
+  };
+
+  player2 = {
+    character: 'O',
+    wins: 0
+  };
   
   grid = [
     ['', '', ''],
@@ -209,6 +216,13 @@ for (let i = 0; i < 9; i++) {
         if (typeof determineWinner(grid) === 'string') {
           console.log('Winner: ' + determineWinner(grid));
           outcome.textContent = `Player ${determineWinner(grid)} wins!`;
+          
+          if (determineWinner(grid) === 'X') {
+            player1.wins++;
+          } else {
+            player2.wins++;
+          }
+
           game.state = 'ended';
           console.log(game.state);
           // We have a winner. Stop the game.
