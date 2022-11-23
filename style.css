@@ -126,6 +126,12 @@ main {
   text-align: left;
 }
 
+.wins p {
+  display: inline;
+  padding-left: 10px;
+  color: azure
+}
+
 .right {  
   width: 25vw;
 }
