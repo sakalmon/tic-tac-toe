@@ -177,19 +177,6 @@ for (let i = 0; i < 9; i++) {
   });
 }
 
-// 8. Loop until there is a winner or the game is tied
-// Wait for player X to make their move, then update the grid.
-// Check if there is a winner. If there is a winner, display the winner.
-// Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
-// Wait for player 0 to make their move, then update the grid.
-// Check if there is a winner. If there is a winner, display the winner.
-// Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
-// while(game.state === 'inProgress') {
-//   // Wait for current player to make their move
-//   // Update grid
-//   // Update game state
-// }
-
 // 9. Check if they want to play again. If so restart the game.
 // let playAgain;
 // // Ask if they want to play again and assign true or false to playAgain
