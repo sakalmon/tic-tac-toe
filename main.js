@@ -16,7 +16,7 @@ let player2 = {
 // DOM Objects
 let allBoxes = document.querySelectorAll('.grid>div>div');
 let currentPlayer = document.querySelector('.current-player');
-let outcome = document.querySelector('.outcome');
+let outcome = document.querySelector('.outcome h2');
 let winner = document.querySelector('.winner');
 
 // ========================================================
