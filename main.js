@@ -35,6 +35,15 @@ function initializeGame() {
     ['', '', ''],
     ['', '', '']
   ];
+
+  clearGrid();
+  outcome.textContent = '';
+  
+  for (let i = 0; i < 9; i++) {
+    allBoxes[i].classList.remove('clicked');
+  }
+
+  currentPlayer.textContent = 'Player X starts first';
 }
 
 // Determine the winner
@@ -123,6 +132,12 @@ function whosTurn(lastMove) {
   }
 }
 
+function clearGrid() {
+  for (let i = 0; i < 9; i++) {
+    allBoxes[i].textContent = '';
+  }
+}
+
 // ========================================================
 // Main Code
 // ========================================================
@@ -158,19 +173,38 @@ for (let i = 0; i < 9; i++) {
       // Only check for a winner after 5 moves (minimum possible moves to win the game)
       if (game.moves >= 5) {
         console.log('Checking for winners');
+
         if (typeof determineWinner(grid) === 'string') {
           console.log('Winner: ' + determineWinner(grid));
           outcome.textContent = `Player ${determineWinner(grid)} wins!`;
-
+          game.state = 'ended';
+          console.log(game.state);
           // We have a winner. Stop the game.
           for (let i = 0; i < 9; i++) {
             allBoxes[i].classList.add('clicked');
           }
         }
+
         if (game.moves === 9 && typeof determineWinner(grid) !== 'string') {
           console.log(determineWinner(grid));
           outcome.textContent = 'Tie!';
           console.log('Game is tied');
+          game.state = 'ended';
+          console.log(game.state);
+        }
+
+        if (game.state === 'ended') {
+          let restartButton = document.createElement('button');
+          restartButton.classList.add('restart-btn');
+          restartButton.textContent = 'Play again';
+
+          let outcome = document.querySelector('.outcome');
+          outcome.appendChild(restartButton);
+
+          restartButton.addEventListener('click', function(event) {
+            outcome.removeChild(event.target);
+            initializeGame();
+          });
         }
       }
     }
