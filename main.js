@@ -41,6 +41,7 @@ function initializeGame() {
   
   for (let i = 0; i < 9; i++) {
     allBoxes[i].classList.remove('clicked');
+    allBoxes[i].classList.remove('green');
   }
 
   currentPlayer.textContent = 'Player X starts first';
@@ -50,7 +51,6 @@ function initializeGame() {
 function determineWinner(grid) {
   let winner = '';
   
-  // Todo
   // Check rows
   for (let row = 0; row < 3; row++) {
     let firstChar = grid[row][0];
@@ -59,6 +59,20 @@ function determineWinner(grid) {
       if (grid[row][1] === firstChar) {
         if (grid[row][2] === firstChar) {
           winner = firstChar;
+
+          if (row === 0) {
+            for (let i = 0; i < 3; i++) {
+              allBoxes[i].classList.add('green')
+            }
+          } else if (row === 1) {
+              for (let i = 3; i < 6; i++) {
+                allBoxes[i].classList.add('green');
+              }
+          } else {
+              for (let i = 6; i < 9; i++) {
+                allBoxes[i].classList.add('green');
+              }
+          }
 
           return winner;
         }
@@ -74,6 +88,21 @@ function determineWinner(grid) {
       if (grid[1][column] === firstChar) {
         if (grid[2][column] === firstChar) {
           winner = firstChar;
+
+          if (column === 0) {
+            for (let i = 0; i < 7; i = i + 3) {
+              allBoxes[i].classList.add('green')
+            }
+          } else if (column === 1) {
+              for (let i = 1; i < 8; i = i + 3) {
+                allBoxes[i].classList.add('green');
+              }
+          } else {
+              for (let i = 2; i < 9; i = i + 3) {
+                allBoxes[i].classList.add('green');
+              }
+          }
+
           return winner;
         }
       }
@@ -87,10 +116,33 @@ function determineWinner(grid) {
     if (firstChar === grid[1][1]) {
       if (firstChar === grid[2][2]) {
         winner = firstChar;
+
+        for (let i = 0; i < 9; i = i + 4) {
+          allBoxes[i].classList.add('green');
+        }
+
         return winner;
       }
     }
   }
+
+  // Check other diagonal
+  firstChar = grid[0][2];
+
+  if (firstChar !== '') {
+    if (firstChar === grid[1][1]) {
+      if (firstChar === grid[2][0]) {
+        winner = firstChar;
+
+        for (let i = 2; i < 7; i = i + 2) {
+          allBoxes[i].classList.add('green');
+        }
+
+        return winner;
+      }
+    }
+  }
+
 
   firstChar = grid[0][2];
 
