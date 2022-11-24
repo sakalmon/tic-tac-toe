@@ -19,7 +19,8 @@ let player2 = {
 // DOM Objects
 let allBoxes = document.querySelectorAll('.grid>div>div');
 let currentPlayer = document.querySelector('.current-player');
-let outcome = document.querySelector('.outcome h2');
+let outcome = document.querySelector('.result h2');
+let result = document.querySelector('.result');
 let winner = document.querySelector('.winner');
 let p1Wins = document.querySelector('.p1-wins');
 let p2Wins = document.querySelector('.p2-wins');
@@ -31,6 +32,7 @@ let tokenSelMenu = document.querySelector('.popup');
 let leftAvatar = document.querySelector('.left-avatar');
 let rightAvatar = document.querySelector('.right-avatar');
 let gameGrid = document.querySelector('.grid');
+let winAvatar = document.querySelector('.win-avatar');
 
 // ========================================================
 // Function declarations
@@ -233,11 +235,15 @@ for (let i = 0; i < 9; i++) {
           if (determineWinner(grid) === 'X') {
             player1.wins++;
             p1Wins.textContent = player1.wins;
+            winAvatar.classList.add(player1.avatar.className);
+
           } else {
             player2.wins++;
             p2Wins.textContent = player2.wins;
+            winAvatar.classList.add(player2.avatar.className);
           }
-
+          result.classList.remove('hidden');
+          result.classList.add('visible');
           game.state = 'ended';
           console.log(game.state);
           // We have a winner. Stop the game.
@@ -252,6 +258,8 @@ for (let i = 0; i < 9; i++) {
           console.log('Game is tied');
           game.state = 'ended';
           console.log(game.state);
+          result.classList.remove('hidden');
+          result.classList.add('visible');
         }
 
         if (game.state === 'ended') {
@@ -259,11 +267,14 @@ for (let i = 0; i < 9; i++) {
           restartButton.classList.add('restart-btn');
           restartButton.textContent = 'Play again';
 
-          let outcome = document.querySelector('.outcome');
-          outcome.appendChild(restartButton);
+          let result = document.querySelector('.result');
+          result.appendChild(restartButton);
 
           restartButton.addEventListener('click', function(event) {
-            outcome.removeChild(event.target);
+            result.removeChild(event.target);
+            result.classList.remove('visible');
+            result.classList.add('hidden');
+            winAvatar.className = 'win-avatar';
             initializeGame();
           });
         }
@@ -274,7 +285,6 @@ for (let i = 0; i < 9; i++) {
 
 resetScoreBtn.addEventListener('click', resetScore);
 
-// Test Code
 let popUp = document.querySelector('.popup');
 
 window.addEventListener('load', function(event) {
