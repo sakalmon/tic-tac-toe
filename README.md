@@ -183,3 +183,25 @@ if (playAgain) {
   // Reset the game
 };
 ```
+## :sparkler: Cool tech I used
+* DOM object manipulation
+* Flexbox and grid layouts
+* Animations
+* Pseudo-elements
+* Popup windows
+## :hammer: Things to fix
+* Rename certain variables to be more descriptive
+* Refactor repeated code into functions
+* Overall layout and aesthetics could be improved
+## :ambulance: Lessons learnt
+* Taking the time to plan the project before writing any actual code saved me a lot of time
+* I could have implemented more functions earlier on to clean up the code
+* Structuring the HTML code is very important for styling in CSS, especially at the start of the project. As the project goes on, changing the HTML structure and CSS styling can get quite messy and complicated if there are many elements.
+## :star: Future features
+* Clicking the avatar will allow you to change it
+* Change player name
+* Visually display on the avatar who's turn it is
+* Option to change grid size
+* Option to restart the game at any point
+* Audio effects when interacting with the game
+
