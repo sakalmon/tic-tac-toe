@@ -1,45 +1,52 @@
 # Tic-Tac-Toe
-A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying to get three of their characters in a line.
+A classic two player game of tic-tac-toe! Players (**X** and **O**) take turns in trying to get three of their tokens in a line. At the end of the game, the winner (or 'tie') will be displayed.
 
-### [Play the game!](https://sakalmon.github.io/tic-tac-toe/)
+![screenshot](https://github.com/sakalmon/tic-tac-toe/blob/main/tic-tac-toe.png)
+
+## [Play the game!](https://sakalmon.github.io/tic-tac-toe/)
 
 ## :mag_right: About
 ### How to play the game
-1. Click the link above and you will be presented with the game board.
-2. Player **X** goes first. Click on a tile to place an **X**.
-3. Player **O** goes second. Click on a tile to place an **O**.
+1. Click the link above and you will be presented with the avatar selection screen.
+2. Select an avatar for player 1 and player 2 to start the game (it won't if you haven't).
+3. Player 1(**X**) goes first. Click on a tile to place an **X**.
+3. Player 2(**O**) goes next. Click on a tile to place an **O**.
 4. Alternate turns until there is a winner (three in a row - horizontally, vertically or diagonally) or a tie.
 5. The result will be displayed at the end of the game.
-6. Click **Restart game** if you'd like to play again.
+6. Click **Play Again** if you want more.
 
-## :blue_book: Game Plan!
+## :blue_book: Plan for developing the game
 
 ### 1. Game Requirements
 * Render the game in a browser
 * Deploy the game on Github pages
-* A grid
-* 2 players
+* Create a game grid
+* 2 player game
 * Switch turns and track who's turn it is
+* Update the game grid when a move is made
 * Logic to determine the winner
 * Display the winner
-* Event listeners
-* Updating game board
-* DOM manipulation
+* Display a tie
+* Use event listeners
+* Use DOM manipulation
 * Separate HTML/CSS/Javascript files
 
 ### 2. Assumptions
 * Player X starts first
+* Use the traditional 3x3 grid
+* Use the traditional **X** and **O** tokens
 
 ### 3. Code Requirements
 #### Specific Data Types
 * Game - Track details about the game such as who's turn it is, game state, winner, etc. - Object literal
 * Grid - Players will interact with this grid to play - 2D array
-* Players - Store details about the player. For example, their character (**X** or **O**) - Object literal
+* Players - Store details about the player. For example, their token (**X** or **O**) - Object literal
 * Variables for DOM manipulation - DOM object
 
 #### Loops and conditionals
-* "While loop" - Check if the game has ended 
-* "If" statement - Check if there is a winner or a tie
+* Some sort of loop to keep checking for a winner/tie
+* 'For' loop for adding multiple event listeners, iterating through DOM objects, etc.
+* 'If-else' statements - Check if there is a winner or a tie, etc.
 
 #### Variable names
 * game
@@ -54,13 +61,11 @@ A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying
 * Write logic to determine who's turn it is (**X** starts first)
 * Wait for player **X** to make their move, then update the grid.
 * Wait for player **0** to make their move, then update the grid.
+* Loop until there is a winner or the game is tied
 * Write logic to determine the winner
-* Write logic to determine if it's possible for someone to win
 * Display the winner
 * Write logic to determine if it's a tie
 * Check if there is a winner. If there is a winner, display the winner.
-* Check if it's still possible for someone to win, taking into account the number of remaining moves.
-* If it's not possible for anyone to win, display that the game is tied.
 * Check if they want to play again. If so, restart the game.
 
 ### 5. Tasks in Sequential Order
@@ -68,17 +73,15 @@ A two player game of tic-tac-toe. Players (**X** and **O**) take turns in trying
 2. Write a function to initialize the game
 3. Write logic to determine the winner
 4. Write logic to determine if it's a tie
-5. Write logic to determine if it's possible for someone to win
-6. Render the grid
-7. Write logic to determine who's turn it is (**X** starts first)
-8. Loop until there is a winner or the game is tied
+5. Render the grid
+6. Write logic to determine who's turn it is (**X** starts first)
+7. Loop the following until there is a winner or the game is tied
 * Wait for player **X** to make their move, then update the grid.
 * Check if there is a winner. If there is a winner, display the winner.
-* Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
 * Wait for player **0** to make their move, then update the grid.
 * Check if there is a winner. If there is a winner, display the winner.
-* Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
-9. Check if they want to play again. If so restart the game.
+
+8. Check if they want to play again. If so restart the game.
  
 ### 6. Code Implementation for Straight-forward Tasks
 1. Declare the required variables
@@ -130,17 +133,7 @@ function isTied(grid) {
   return tied;
 }
 ```
-5. Write logic to determine if it's possible for someone to win
-```
-function determineGameState(grid) {
-  let possible;
-  
-  // Todo
-  
-  return possible;
-}
-```
-6. Render the grid
+5. Render the grid
 ```
 <div class="grid">
   <div class="row1">
@@ -160,7 +153,7 @@ function determineGameState(grid) {
   </div>
 </div>
 ```
-7. Write logic to determine who's turn it is (**X** starts first)
+6. Write logic to determine who's turn it is (**X** starts first)
 ```
 function whosTurn(lastMove) {
   if (lastMove === 'X') {
@@ -169,21 +162,20 @@ function whosTurn(lastMove) {
     return 'X';
 }
 ```
-8. Loop until there is a winner or the game is tied
+7. Loop until there is a winner or the game is tied
 * Wait for player **X** to make their move, then update the grid.
 * Check if there is a winner. If there is a winner, display the winner.
-* Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
 * Wait for player **0** to make their move, then update the grid.
 * Check if there is a winner. If there is a winner, display the winner.
-* Check if it's still possible for someone to win, taking into account the number of remaining moves. If it's still possible to have a winner, let the game continue. If not, display that the game is tied.
 ```
+// A while loop might not be required here as we can use 'click' events and 'if' statements to decide whether or not the game should continue
 while(game.state === 'inProgress') {
   // Wait for current player to make their move
   // Update grid
   // Update game state
 }
 ```
-9. Check if they want to play again. If so restart the game.
+8. Check if they want to play again. If so restart the game.
 ```
 let playAgain;
 // Ask if they want to play again and assign true or false to playAgain
