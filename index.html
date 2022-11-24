@@ -21,7 +21,6 @@
       </section>
       <button class="reset-score-btn">Reset score</button>
     </section>
-    <section class="left-player"></section>
   </section>
   <section class="middle">
     <header>
@@ -29,9 +28,12 @@
       <h2 class="current-player">Player X starts first</h2>
     </header>
     <main>
+      <section class="left-player">
+        <div class="left-avatar"></div>
+      </section>
       <section class="game-container">
         <section class="game">
-          <div class="grid">
+          <div class="grid hidden">
             <div class="row-1">
               <div class="box-1"><div></div></div>
               <div class="box-2"><div></div></div>
@@ -52,6 +54,9 @@
         <section class="outcome">
           <h2></h2>
         </section>
+      </section>
+      <section class="right-player">
+        <div class="right-avatar"></div>
       </section>
     </main>
   </section>
@@ -91,6 +96,9 @@
     <section>
       <button class="start-btn">Start Game</button>
     </section>
+  </section>
+  <section class="result">
+    
   </section>
 </body>
 </html>

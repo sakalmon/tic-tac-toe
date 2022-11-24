@@ -28,7 +28,9 @@ let allBlueAvatars = document.querySelectorAll('.player1-tkn div');
 let allRedAvatars = document.querySelectorAll('.player2-tkn div');
 let startBtn = document.querySelector('.start-btn');
 let tokenSelMenu = document.querySelector('.popup');
-let leftPlayer = document.querySelector('.left-player');
+let leftAvatar = document.querySelector('.left-avatar');
+let rightAvatar = document.querySelector('.right-avatar');
+let gameGrid = document.querySelector('.grid');
 
 // ========================================================
 // Function declarations
@@ -312,6 +314,14 @@ for (let i = 0; i < 9; i++) {
 startBtn.addEventListener('click', function(event) {
   tokenSelMenu.classList.remove('visible');
   tokenSelMenu.classList.add('hidden');
-  leftPlayer.appendChild(player1.avatar);
   player1.avatar.classList.remove('selected');  
+  leftAvatar.classList.add(player1.avatar.className);
+
+  tokenSelMenu.classList.remove('visible');
+  tokenSelMenu.classList.add('hidden');
+  player2.avatar.classList.remove('selected');  
+  rightAvatar.classList.add(player2.avatar.className);
+
+  gameGrid.classList.remove('hidden');
+  gameGrid.classList.add('visible');
 });
