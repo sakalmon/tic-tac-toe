@@ -7,10 +7,12 @@ let grid = [];
 
 let player1 = {
   character: 'X',
+  avatar: '',
   wins: 0
 };
 let player2 = {
   character: 'O',
+  avatar: '',
   wins: 0
 };
 
@@ -273,3 +275,34 @@ window.addEventListener('load', function(event) {
   popUp.classList.remove('hidden');
   popUp.classList.add('visible');
 });
+
+let allBlueAvatars = document.querySelectorAll('.player1-tkn div');
+let allRedAvatars = document.querySelectorAll('.player2-tkn div');
+
+for (let i = 0; i < 9; i++) {
+  allBlueAvatars[i].addEventListener('click', function(event) {
+    if (event.target.classList[0][0] === 'b') {
+      if (player1.avatar === '') {
+        player1.avatar = event.target;
+      } else {
+        player1.avatar.classList.remove('selected');
+        player1.avatar = event.target;
+      }
+
+      player1.avatar.classList.add('selected');
+    }
+  });
+
+  allRedAvatars[i].addEventListener('click', function(event) {
+    if (event.target.classList[0][0] === 'r') {
+      if (player2.avatar === '') {
+        player2.avatar = event.target;
+      } else {
+        player2.avatar.classList.remove('selected');
+        player2.avatar = event.target;
+      }
+
+      player2.avatar.classList.add('selected');
+    }
+  });
+}
