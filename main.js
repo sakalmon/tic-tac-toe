@@ -32,7 +32,9 @@ let tokenSelMenu = document.querySelector('.popup');
 let leftAvatar = document.querySelector('.left-avatar');
 let rightAvatar = document.querySelector('.right-avatar');
 let gameGrid = document.querySelector('.grid');
-let winAvatar = document.querySelector('.win-avatar');
+
+let avatar = document.createElement('div');
+avatar.classList.add('win-avatar');
 
 // ========================================================
 // Function declarations
@@ -235,11 +237,15 @@ for (let i = 0; i < 9; i++) {
           if (determineWinner(grid) === 'X') {
             player1.wins++;
             p1Wins.textContent = player1.wins;
+            result.appendChild(avatar);
+            let winAvatar = document.querySelector('.win-avatar');
             winAvatar.classList.add(player1.avatar.className);
 
           } else {
             player2.wins++;
             p2Wins.textContent = player2.wins;
+            result.appendChild(avatar);
+            let winAvatar = document.querySelector('.win-avatar');
             winAvatar.classList.add(player2.avatar.className);
           }
           result.classList.remove('hidden');
@@ -274,7 +280,12 @@ for (let i = 0; i < 9; i++) {
             result.removeChild(event.target);
             result.classList.remove('visible');
             result.classList.add('hidden');
-            winAvatar.className = 'win-avatar';
+            let winAvatar = document.querySelector('.win-avatar');
+            
+            // To prevent an error when trying to remove the avatar after a tie (avatar doesn't get appended as a child when there is a tie).
+            if (result.childElementCount > 1) {
+              result.removeChild(winAvatar);
+            }
             initializeGame();
           });
         }
@@ -335,3 +346,5 @@ startBtn.addEventListener('click', function(event) {
   gameGrid.classList.remove('hidden');
   gameGrid.classList.add('visible');
 });
+
+console.log(avatar);
