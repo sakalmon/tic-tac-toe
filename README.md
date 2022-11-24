@@ -5,8 +5,7 @@ A classic two player game of tic-tac-toe! Players (**X** and **O**) take turns i
 
 ## [Play the game!](https://sakalmon.github.io/tic-tac-toe/)
 
-## :mag_right: About
-### How to play the game
+## :video_game: How to play the game
 1. Click the link above and you will be presented with the avatar selection screen.
 2. Select an avatar for player 1 and player 2 to start the game (it won't if you haven't).
 3. Player 1(**X**) goes first. Click on a tile to place an **X**.
