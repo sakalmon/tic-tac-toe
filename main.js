@@ -32,6 +32,8 @@ let tokenSelMenu = document.querySelector('.popup');
 let leftAvatar = document.querySelector('.left-avatar');
 let rightAvatar = document.querySelector('.right-avatar');
 let gameGrid = document.querySelector('.grid');
+let leftToken = document.querySelector('.left-token p');
+let rightToken = document.querySelector('.right-token p');
 
 let avatar = document.createElement('div');
 avatar.classList.add('win-avatar');
@@ -167,7 +169,6 @@ function determineWinner(grid) {
     }
   }
 
-
   firstChar = grid[0][2];
 
   if (firstChar !== '') {
@@ -225,13 +226,9 @@ for (let i = 0; i < 9; i++) {
       game.moves++;
       currentPlayer.textContent = `Player ${whosTurn(game.lastMove)}'s turn`;
 
-      console.log(game.moves);
       // Only check for a winner after 5 moves (minimum possible moves to win the game)
       if (game.moves >= 5) {
-        console.log('Checking for winners');
-
         if (typeof determineWinner(grid) === 'string') {
-          console.log('Winner: ' + determineWinner(grid));
           outcome.textContent = `Player ${determineWinner(grid)} wins!`;
           
           if (determineWinner(grid) === 'X') {
@@ -239,19 +236,24 @@ for (let i = 0; i < 9; i++) {
             p1Wins.textContent = player1.wins;
             result.appendChild(avatar);
             let winAvatar = document.querySelector('.win-avatar');
+            console.log('player 1 avatar class list before ' + winAvatar.classList)
             winAvatar.classList.add(player1.avatar.className);
+            console.log('player 1 avatar class list after ' + winAvatar.classList)
 
           } else {
             player2.wins++;
             p2Wins.textContent = player2.wins;
             result.appendChild(avatar);
             let winAvatar = document.querySelector('.win-avatar');
+            console.log('player 2 avatar class list before ' + winAvatar.classList)
             winAvatar.classList.add(player2.avatar.className);
+            console.log('player 2 avatar class list after ' + winAvatar.classList)
           }
+
           result.classList.remove('hidden');
           result.classList.add('visible');
           game.state = 'ended';
-          console.log(game.state);
+
           // We have a winner. Stop the game.
           for (let i = 0; i < 9; i++) {
             allBoxes[i].classList.add('clicked');
@@ -259,11 +261,8 @@ for (let i = 0; i < 9; i++) {
         }
 
         if (game.moves === 9 && typeof determineWinner(grid) !== 'string') {
-          console.log(determineWinner(grid));
           outcome.textContent = 'Tie!';
-          console.log('Game is tied');
           game.state = 'ended';
-          console.log(game.state);
           result.classList.remove('hidden');
           result.classList.add('visible');
         }
@@ -277,15 +276,20 @@ for (let i = 0; i < 9; i++) {
           result.appendChild(restartButton);
 
           restartButton.addEventListener('click', function(event) {
+            // Remove the button
             result.removeChild(event.target);
             result.classList.remove('visible');
             result.classList.add('hidden');
-            let winAvatar = document.querySelector('.win-avatar');
             
             // To prevent an error when trying to remove the avatar after a tie (avatar doesn't get appended as a child when there is a tie).
+            // This code only runs when there is a winner
             if (result.childElementCount > 1) {
+              let winAvatar = document.querySelector('.win-avatar');
+              winAvatar.className = 'win-avatar';
+              console.log('win avatar class list in event listener ' + winAvatar.classList)
               result.removeChild(winAvatar);
             }
+            
             initializeGame();
           });
         }
@@ -299,7 +303,6 @@ resetScoreBtn.addEventListener('click', resetScore);
 let popUp = document.querySelector('.popup');
 
 window.addEventListener('load', function(event) {
-  console.log(popUp.classList);
   popUp.classList.remove('hidden');
   popUp.classList.add('visible');
 });
@@ -345,6 +348,7 @@ startBtn.addEventListener('click', function(event) {
 
   gameGrid.classList.remove('hidden');
   gameGrid.classList.add('visible');
-});
 
-console.log(avatar);
+  leftToken.classList.remove('hidden');
+  rightToken.classList.remove('hidden');
+});
