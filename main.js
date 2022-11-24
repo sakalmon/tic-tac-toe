@@ -24,6 +24,11 @@ let winner = document.querySelector('.winner');
 let p1Wins = document.querySelector('.p1-wins');
 let p2Wins = document.querySelector('.p2-wins');
 let resetScoreBtn = document.querySelector('.reset-score-btn');
+let allBlueAvatars = document.querySelectorAll('.player1-tkn div');
+let allRedAvatars = document.querySelectorAll('.player2-tkn div');
+let startBtn = document.querySelector('.start-btn');
+let tokenSelMenu = document.querySelector('.popup');
+let leftPlayer = document.querySelector('.left-player');
 
 // ========================================================
 // Function declarations
@@ -276,9 +281,6 @@ window.addEventListener('load', function(event) {
   popUp.classList.add('visible');
 });
 
-let allBlueAvatars = document.querySelectorAll('.player1-tkn div');
-let allRedAvatars = document.querySelectorAll('.player2-tkn div');
-
 for (let i = 0; i < 9; i++) {
   allBlueAvatars[i].addEventListener('click', function(event) {
     if (event.target.classList[0][0] === 'b') {
@@ -306,3 +308,10 @@ for (let i = 0; i < 9; i++) {
     }
   });
 }
+
+startBtn.addEventListener('click', function(event) {
+  tokenSelMenu.classList.remove('visible');
+  tokenSelMenu.classList.add('hidden');
+  leftPlayer.appendChild(player1.avatar);
+  player1.avatar.classList.remove('selected');  
+});
