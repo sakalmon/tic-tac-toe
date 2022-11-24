@@ -264,3 +264,12 @@ for (let i = 0; i < 9; i++) {
 }
 
 resetScoreBtn.addEventListener('click', resetScore);
+
+// Test Code
+let popUp = document.querySelector('.popup');
+
+window.addEventListener('load', function(event) {
+  console.log(popUp.classList);
+  popUp.classList.remove('hidden');
+  popUp.classList.add('visible');
+});

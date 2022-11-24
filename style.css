@@ -158,3 +158,194 @@ main {
   background-color: rgb(230, 136, 82);
   margin-left: -10px;
 }
+
+/* Test Code */
+.popup {
+  width: 80vw;
+  /* height: 50vh; */
+  height: fit-content;
+  margin: 25vh auto;
+  background-color: rgba(105,105,105, 0.2);
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 3rem;
+  position: absolute;
+  text-align: center;
+  font-family: 'Architects Daughter', cursive;
+  border-radius: 30px;
+  box-shadow: black 10px 10px 10px;
+  max-width: 800px;
+}
+
+.popup-title {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.grid {
+  visibility: hidden;
+}
+
+.token-select {
+  display: flex;
+  justify-content: space-around;
+}
+
+.token-select div {
+  border-radius: 10px;
+  /* border: 3px solid rgba(132, 208, 255, 0.5); */
+  margin: 3px;
+}
+
+.token-select div:hover {
+  width: 110%;
+  height: 110%;
+  z-index: 100;
+  position: relative;
+  top: -10%;
+  left: -10%;
+  box-shadow: black 3px 3px 5px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    top: -10%;
+  }
+  50% {
+    top: -20%;
+  }
+  100% {
+    top: -10%;
+  }
+}
+
+.player1-tkn div:hover {
+  /* border: 2px solid rgba(132, 208, 255, 0.5); */
+  border: 2px solid yellow;
+}
+
+.player2-tkn div:hover {
+  /* border: 2px solid rgba(255, 0, 0, 0.5); */
+  border: 2px solid yellow;
+}
+
+.players {
+  margin-top: 10px;
+  margin-bottom: 10px;  
+}
+
+.token-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 5px;
+}
+
+.player1-tkn .token-grid {
+  background-color: rgba(132, 208, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: black 3px 3px 10px;
+}
+
+.player2-tkn .token-grid {
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 10px;
+  box-shadow: black 3px 3px 10px;
+}
+
+.token-grid div {
+  width: 75px;
+  height: 75px;
+  background-size: cover;
+  padding: 5px;
+  background-repeat: no-repeat;
+}
+
+.b-avt-1 {
+  background-image: url('./blue-avatars/b-scout.png');
+}
+
+.b-avt-2 {
+  background-image: url('./blue-avatars/b-soldier.png');
+}
+
+.b-avt-3 {
+  background-image: url('./blue-avatars/b-pyro.png');
+}
+
+.b-avt-4 {
+  background-image: url('./blue-avatars/b-demo.png');
+}
+
+.b-avt-5 {
+  background-image: url('./blue-avatars/b-heavy.png');
+}
+
+.b-avt-6 {
+  background-image: url('./blue-avatars/b-engineer.png');
+}
+
+.b-avt-7 {
+  background-image: url('./blue-avatars/b-medic.png');
+}
+
+.b-avt-8 {
+  background-image: url('./blue-avatars/b-sniper.png');
+}
+
+.b-avt-9 {
+  background-image: url('./blue-avatars/b-spy.png');
+}
+
+.r-avt-1 {
+  background-image: url('./red-avatars/r-scout.png');
+}
+
+.r-avt-2 {
+  background-image: url('./red-avatars/r-soldier.png');
+}
+
+.r-avt-3 {
+  background-image: url('./red-avatars/r-pyro.png');
+}
+
+.r-avt-4 {
+  background-image: url('./red-avatars/r-demo.png');
+}
+
+.r-avt-5 {
+  background-image: url('./red-avatars/r-heavy.png');
+}
+
+.r-avt-6 {
+  background-image: url('./red-avatars/r-engineer.png');
+}
+
+.r-avt-7 {
+  background-image: url('./red-avatars/r-medic.png');
+}
+
+.r-avt-8 {
+  background-image: url('./red-avatars/r-sniper.png');
+}
+
+.r-avt-9 {
+  background-image: url('./red-avatars/r-spy.png');
+}
+
+.start {
+  font-family: 'Architects Daughter', cursive;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  font-size: 1.75rem;
+}
