@@ -236,18 +236,14 @@ for (let i = 0; i < 9; i++) {
             p1Wins.textContent = player1.wins;
             result.appendChild(avatar);
             let winAvatar = document.querySelector('.win-avatar');
-            console.log('player 1 avatar class list before ' + winAvatar.classList)
             winAvatar.classList.add(player1.avatar.className);
-            console.log('player 1 avatar class list after ' + winAvatar.classList)
 
           } else {
             player2.wins++;
             p2Wins.textContent = player2.wins;
             result.appendChild(avatar);
             let winAvatar = document.querySelector('.win-avatar');
-            console.log('player 2 avatar class list before ' + winAvatar.classList)
             winAvatar.classList.add(player2.avatar.className);
-            console.log('player 2 avatar class list after ' + winAvatar.classList)
           }
 
           result.classList.remove('hidden');
@@ -286,10 +282,9 @@ for (let i = 0; i < 9; i++) {
             if (result.childElementCount > 1) {
               let winAvatar = document.querySelector('.win-avatar');
               winAvatar.className = 'win-avatar';
-              console.log('win avatar class list in event listener ' + winAvatar.classList)
               result.removeChild(winAvatar);
             }
-            
+
             initializeGame();
           });
         }
@@ -336,19 +331,21 @@ for (let i = 0; i < 9; i++) {
 }
 
 startBtn.addEventListener('click', function(event) {
-  tokenSelMenu.classList.remove('visible');
-  tokenSelMenu.classList.add('hidden');
-  player1.avatar.classList.remove('selected');  
-  leftAvatar.classList.add(player1.avatar.className);
-
-  tokenSelMenu.classList.remove('visible');
-  tokenSelMenu.classList.add('hidden');
-  player2.avatar.classList.remove('selected');  
-  rightAvatar.classList.add(player2.avatar.className);
-
-  gameGrid.classList.remove('hidden');
-  gameGrid.classList.add('visible');
-
-  leftToken.classList.remove('hidden');
-  rightToken.classList.remove('hidden');
+  if (player1.avatar !== '' && player2.avatar !== '') {
+    tokenSelMenu.classList.remove('visible');
+    tokenSelMenu.classList.add('hidden');
+    player1.avatar.classList.remove('selected');  
+    leftAvatar.classList.add(player1.avatar.className);
+  
+    tokenSelMenu.classList.remove('visible');
+    tokenSelMenu.classList.add('hidden');
+    player2.avatar.classList.remove('selected');  
+    rightAvatar.classList.add(player2.avatar.className);
+  
+    gameGrid.classList.remove('hidden');
+    gameGrid.classList.add('visible');
+  
+    leftToken.classList.remove('hidden');
+    rightToken.classList.remove('hidden');
+  }
 });
