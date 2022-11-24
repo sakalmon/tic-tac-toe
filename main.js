@@ -339,7 +339,7 @@ startBtn.addEventListener('click', function(event) {
   
     tokenSelMenu.classList.remove('visible');
     tokenSelMenu.classList.add('hidden');
-    player2.avatar.classList.remove('selected');  
+    player2.avatar.classList.remove('selected');
     rightAvatar.classList.add(player2.avatar.className);
   
     gameGrid.classList.remove('hidden');
