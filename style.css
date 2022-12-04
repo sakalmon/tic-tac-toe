@@ -413,7 +413,7 @@ main {
   margin: 0;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 500px) {
   .token-select {
     width: fit-content;
     flex-direction: column;
