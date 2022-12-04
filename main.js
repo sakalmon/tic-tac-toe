@@ -10,6 +10,7 @@ let player1 = {
   avatar: '',
   wins: 0
 };
+
 let player2 = {
   character: 'O',
   avatar: '',
@@ -34,6 +35,7 @@ let rightAvatar = document.querySelector('.right-avatar');
 let gameGrid = document.querySelector('.grid');
 let leftToken = document.querySelector('.left-token p');
 let rightToken = document.querySelector('.right-token p');
+let popUp = document.querySelector('.popup');
 
 let avatar = document.createElement('div');
 avatar.classList.add('win-avatar');
@@ -201,11 +203,11 @@ function clearGrid() {
 
 initializeGame();
 
-// Add click event listeners to all boxes
+// Add event listeners for all boxes in the grid
 for (let i = 0; i < 9; i++) {  
   allBoxes[i].addEventListener('click', function(event) {
     // Prevent subsequent clicks changing the character already in the box
-    if (event.target.classList.contains('clicked') === false) {
+    if (!event.target.classList.contains('clicked')) {
       let parent = event.target.parentNode;
       let whosNext = whosTurn(game.lastMove);
       let row = parent.className[parent.className.length - 1] - 1;
@@ -228,6 +230,7 @@ for (let i = 0; i < 9; i++) {
 
       // Only check for a winner after 5 moves (minimum possible moves to win the game)
       if (game.moves >= 5) {
+        // If we have a winner
         if (typeof determineWinner(grid) === 'string') {
           outcome.textContent = `Player ${determineWinner(grid)} wins!`;
           
@@ -246,21 +249,20 @@ for (let i = 0; i < 9; i++) {
             winAvatar.classList.add(player2.avatar.className);
           }
 
-          result.classList.remove('hidden');
-          result.classList.add('visible');
+          result.classList.toggle('hidden');
           game.state = 'ended';
 
-          // We have a winner. Stop the game.
+          // Make all boxes unclickable, ending the game.
           for (let i = 0; i < 9; i++) {
             allBoxes[i].classList.add('clicked');
           }
         }
 
+        // If we have a tie
         if (game.moves === 9 && typeof determineWinner(grid) !== 'string') {
           outcome.textContent = 'Tie!';
           game.state = 'ended';
-          result.classList.remove('hidden');
-          result.classList.add('visible');
+          result.classList.toggle('hidden');
         }
 
         if (game.state === 'ended') {
@@ -274,8 +276,7 @@ for (let i = 0; i < 9; i++) {
           restartButton.addEventListener('click', function(event) {
             // Remove the button
             result.removeChild(event.target);
-            result.classList.remove('visible');
-            result.classList.add('hidden');
+            result.classList.toggle('hidden');
             
             // To prevent an error when trying to remove the avatar after a tie (avatar doesn't get appended as a child when there is a tie).
             // This code only runs when there is a winner
@@ -295,57 +296,45 @@ for (let i = 0; i < 9; i++) {
 
 resetScoreBtn.addEventListener('click', resetScore);
 
-let popUp = document.querySelector('.popup');
-
-window.addEventListener('load', function(event) {
-  popUp.classList.remove('hidden');
-  popUp.classList.add('visible');
-});
-
+// Event listeners for avatar selection screen
 for (let i = 0; i < 9; i++) {
   allBlueAvatars[i].addEventListener('click', function(event) {
-    if (event.target.classList[0][0] === 'b') {
-      if (player1.avatar === '') {
-        player1.avatar = event.target;
-      } else {
-        player1.avatar.classList.remove('selected');
-        player1.avatar = event.target;
-      }
-
-      player1.avatar.classList.add('selected');
+    if (player1.avatar !== '') {
+      player1.avatar.classList.remove('selected');
     }
+
+    player1.avatar = event.target;
+    player1.avatar = event.target;
+
+    player1.avatar.classList.add('selected');
   });
 
   allRedAvatars[i].addEventListener('click', function(event) {
-    if (event.target.classList[0][0] === 'r') {
-      if (player2.avatar === '') {
-        player2.avatar = event.target;
-      } else {
-        player2.avatar.classList.remove('selected');
-        player2.avatar = event.target;
-      }
-
-      player2.avatar.classList.add('selected');
+    if (player2.avatar !== '') {
+      player2.avatar.classList.remove('selected');
     }
+
+    player2.avatar = event.target;
+    player2.avatar = event.target;
+
+    player2.avatar.classList.add('selected');
   });
 }
 
 startBtn.addEventListener('click', function(event) {
   if (player1.avatar !== '' && player2.avatar !== '') {
-    tokenSelMenu.classList.remove('visible');
-    tokenSelMenu.classList.add('hidden');
+    // Hide avatar selection menu once both players have chosen their avatar
+    tokenSelMenu.classList.toggle('hidden');
+
     player1.avatar.classList.remove('selected');  
     leftAvatar.classList.add(player1.avatar.className);
   
-    tokenSelMenu.classList.remove('visible');
-    tokenSelMenu.classList.add('hidden');
     player2.avatar.classList.remove('selected');
     rightAvatar.classList.add(player2.avatar.className);
   
-    gameGrid.classList.remove('hidden');
-    gameGrid.classList.add('visible');
+    gameGrid.classList.toggle('hidden');
   
-    leftToken.classList.remove('hidden');
-    rightToken.classList.remove('hidden');
+    leftToken.classList.toggle('hidden');
+    rightToken.classList.toggle('hidden');
   }
 });
